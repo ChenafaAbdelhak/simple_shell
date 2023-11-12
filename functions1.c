@@ -30,7 +30,7 @@ char *read_line(void)
 
 char **tokenizer(char *line)
 {
-	char *token = NULL, *tmp = NULL;
+	char *token = NULL, *tmp = NULL, *DELIM = " \t\n";
 	char **command = NULL;
 	int cpt = 0, i = 0;
 
@@ -38,7 +38,7 @@ char **tokenizer(char *line)
 		return (NULL);
 	
 	tmp = _strdup(line);
-	token = strtok(tmp, " /t/n");
+	token = strtok(tmp, DELIM);
 	if (!token)
 	{
 		free(line), line = NULL;
@@ -48,21 +48,21 @@ char **tokenizer(char *line)
 	while (token)
 	{
 		cpt++;
-		token = strtok(NULL, " /t/n");
+		token = strtok(NULL, DELIM);
 	}
 	free(tmp), tmp = NULL;
 
-	command = malloc(sizeof(char *) * (cpt + 1));
+	command = (char **) malloc(sizeof(char *) * (cpt + 1));
 	if (!command)
 	{
 		free(line), line = NULL;
 		return (NULL);
 	}
-	token = strtok(line ," /t/n");
+	token = strtok(line, DELIM);
 	while (token)
 	{
 		command[i] = token;
-		token = strtok(NULL, " /t/n");
+		token = strtok(NULL, DELIM);
 		i++;
 	}
 	command[i] = NULL;

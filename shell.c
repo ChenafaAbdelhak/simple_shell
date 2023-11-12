@@ -12,7 +12,9 @@ int main(int ac, char *args[])
 	char *line = NULL, **command = NULL;
 	int status = 0;
 	(void) ac;
-/*
+	(void) args;
+	(void) status;
+
 	while (1)
 	{
 		line = read_line();
@@ -20,17 +22,13 @@ int main(int ac, char *args[])
 			{
 				if (isatty(STDIN_FILENO))
 					write(STDOUT_FILENO, "\n", 1);
-				return (status);
+				return (0);
 			}
 		command = tokenizer(line);
 		if (!command)
 			continue;
-		status = _execute(command, args);*/
-		
-		printf("ffff");
-		command = tokenizer("how are you betty");
-
+		status = _execute(command, args);
 	
-
+	}
 	return (0);
 }
