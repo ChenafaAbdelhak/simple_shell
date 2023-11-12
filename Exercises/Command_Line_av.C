@@ -31,3 +31,28 @@ int main(int ac, char **av)
 
 	return (0);
 }
+
+/**
+ * Split _
+ *
+ *Return: array of strings
+*/
+char **Split(char *str)
+{
+	char *Token, **Tokens;
+	int i = 0;
+
+	Token = strok(str, "\t\n");
+	while (Token != NULL)
+	{
+		i++;
+		Tokens = realloc(Tokens, i * sizeof(char *));
+		if (Tokens == NULL)
+		{
+			perror("realloc");
+			exit(EXIT_FAILURE);
+		}
+		Tokens[i - 1] = Token;
+		Token = strtok(NULL, "\t\n");
+	}
+}
