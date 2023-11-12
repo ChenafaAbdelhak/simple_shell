@@ -13,16 +13,15 @@ int main(int ac, char *args[])
 	int status = 0;
 	(void) ac;
 	(void) args;
-	(void) status;
 
 	while (1)
 	{
 		line = read_line();
-			if (!line)
+			if (line == NULL)
 			{
 				if (isatty(STDIN_FILENO))
 					write(STDOUT_FILENO, "\n", 1);
-				return (0);
+				return (status);
 			}
 		command = tokenizer(line);
 		if (!command)
@@ -30,5 +29,5 @@ int main(int ac, char *args[])
 		status = _execute(command, args);
 	
 	}
-	return (0);
+	return (status);
 }
