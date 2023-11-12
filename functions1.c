@@ -3,7 +3,7 @@
 /**
  * read_line - read a line from stdin
  * Return: the line as a *char
- * 
+ *
  */
 
 char *read_line(void)
@@ -24,7 +24,7 @@ char *read_line(void)
 
 /**
  * tokenizer - tokenizer
- *
+ * @line: line
  * Return: two d array of char
  */
 
@@ -36,7 +36,7 @@ char **tokenizer(char *line)
 
 	if (!line)
 		return (NULL);
-	
+
 	tmp = _strdup(line);
 	token = strtok(tmp, DELIM);
 	if (!token)
@@ -71,8 +71,10 @@ char **tokenizer(char *line)
 }
 
 /**
- *
- *
+ * _execute - execute a command
+ * @command: the command
+ * @args: argv of main
+ * Return: exit status
  */
 
 int _execute(char **command, char **args)
@@ -83,7 +85,7 @@ int _execute(char **command, char **args)
 	child = fork();
 	if (child == 0)
 	{
-		if(execve(command[0], command, environ) == -1)
+		if (execve(command[0], command, environ) == -1)
 		{
 			perror(args[0]);
 		}

@@ -27,7 +27,6 @@ int main(int ac, char *args[])
 		if (!command)
 			continue;
 		status = _execute(command, args);
-	
 	}
 	return (status);
 }
