@@ -19,6 +19,8 @@ char *_strdup(char *str);
 char **tokenizer(char *line);
 int _strlen(char *s);
 int _execute(char **command, char **args);
+char *_getenv(char *value);
+int _strcmp(char *s1, char *s2);
 
 
 #endif

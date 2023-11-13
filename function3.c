@@ -3,18 +3,18 @@
  * _getenv - gets an environment variable
  * @value: string variable
  *
- * return: NULL
+ * Return: NULL 0 or env
 */
 char *_getenv(char *value)
 {
-	char * temp, *env, *var, *elemnt;
+	char *temp, *env, *var, *element;
 	int i;
 
 	for (i = 0; environ[i]; i++)
 	{
 		temp = _strdup(environ[i]);
-		elment = strtok(temp,"=");
-		if (_strcmp(elemnt, value) == 0)
+		element = strtok(temp, "=");
+		if (_strcmp(element, value) == 0)
 		{
 			var = strtok(NULL, "\n");
 			env = _strdup(var);
@@ -24,4 +24,9 @@ char *_getenv(char *value)
 		free(temp), temp = NULL;
 	}
 	return (NULL);
+}
+int main(void)
+{
+	printf("%s\n", _getenv("PWDb"));
+	return (0);
 }
