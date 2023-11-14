@@ -37,7 +37,7 @@ char *_getenv(char *value)
 
 char *_getpath(char *command)
 {
-	char *env_path, *prompt, *dir;
+	char *env_path = NULL, *prompt, *dir;
 	struct stat st;
 
 	dir = strtok(env_path, ":");
@@ -63,20 +63,18 @@ char *_getpath(char *command)
 	return (NULL);
 }
 
-/**
- * main -entry p
- * @ac: lll
- * @av: lll
- * Return: 0
- */
+/*
 
 int main(int ac, char **av)
 {
 	char *prompt;
+	(void) ac;
 
 	prompt = _getpath(av[1]);
 	if (prompt)
 		printf("%s\n", prompt);
 	else
 		printf("does not exist");
+	return (0);
 }
+*/
