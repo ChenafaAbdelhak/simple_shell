@@ -15,14 +15,17 @@
 extern char **environ;
 
 char *read_line(void);
-char *_strdup(char *str);
 char **tokenizer(char *line);
-int _strlen(char *s);
 int _execute(char **command, char **args);
 char *_getenv(char *value);
-int _strcmp(char *s1, char *s2);
 char *_getpath(char *command);
-char *_strncpy(char *dest, char *src, int n);
 
+
+char *_strdup(char *str);
+int _strlen(char *s);
+int _strcmp(char *s1, char *s2);
+char *_strncpy(char *dest, char *src, int n);
+char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
 
 #endif

@@ -34,6 +34,7 @@ char *_getenv(char *value)
  * Return: NULL / prompt
  *
 */
+
 char *_getpath(char *command)
 {
 	char *env_path, *prompt, *dir;
@@ -46,7 +47,7 @@ char *_getpath(char *command)
 		if (prompt)
 		{
 			_strcpy(prompt, dir);
-			_strcat(prompt, ("/");
+			_strcat(prompt, "/");
 			_strcat(prompt, command);
 			if (state(prompt, &st) == 0)
 			{
