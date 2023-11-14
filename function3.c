@@ -27,7 +27,7 @@ char *_getenv(char *value)
 }
 
 /**
- * *_getpath - function that prints each 
+ * *_getpath - function that prints each
  * directory contained in the the environment
  * variable PATH
  * @command: character
@@ -41,7 +41,7 @@ char *_getpath(char *command)
 	struct stat st;
 
 	dir = strtok(path_env, ":");
-	while(dir)
+	while (dir)
 	{
 		prompt = malloc(_strlen(dir) + _strlen(command) + 2);
 		if (prompt)
@@ -63,12 +63,21 @@ char *_getpath(char *command)
 	return (NULL);
 }
 
+/**
+ * main -entry p
+ * @ac: lll
+ * @av: lll
+ * Return: 0
+ */
+
 int main(int ac, char **av)
 {
 	char *prompt;
+
 	prompt = _getpath(av[1]);
-	if(prompt)
+	if (prompt)
 		printf("%s\n", prompt);
 	else
 		printf("does not exist");
 }
+
