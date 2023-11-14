@@ -25,8 +25,49 @@ char *_getenv(char *value)
 	}
 	return (NULL);
 }
-int main(void)
+
+/**
+ * *_getpath - function that prints each 
+ * directory contained in the the environment
+ * variable PATH
+ * @command: character
+ * Return: NULL / prompt
+ *
+*/
+char *_getpath(char *command)
 {
-	printf("%s\n", _getenv("PWDb"));
-	return (0);
+	char *env_path, *prompt, *dir;
+	struct stat st;
+
+	dir = strtok(path_env, ":");
+	while(dir)
+	{
+		prompt = malloc(_strlen(dir) + _strlen(command) + 2);
+		if (prompt)
+		{
+			_strcpy(prompt, dir);
+			_strcat(prompt, ("/");
+			_strcat(prompt, command);
+			if (state(prompt, &st) == 0)
+			{
+				free(env_path);
+				return (prompt);
+			}
+			free(prompt), prompt = NULL;
+
+			dir = strtok(NULL, ":");
+		}
+	}
+	free(path_env);
+	return (NULL);
+}
+
+int main(int ac, char **av)
+{
+	char *prompt;
+	prompt = _getpath(av[1]);
+	if(prompt)
+		printf("%s\n", prompt);
+	else
+		printf("does not exist");
 }
