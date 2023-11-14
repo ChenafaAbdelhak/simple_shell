@@ -17,6 +17,7 @@ extern char **environ;
 char *read_line(void);
 char **tokenizer(char *line);
 int _execute(char **command, char **args);
+void free2DArray(char **array);
 char *_getenv(char *value);
 char *_getpath(char *command);
 

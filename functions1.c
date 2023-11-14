@@ -87,12 +87,36 @@ int _execute(char **command, char **args)
 	{
 		if (execve(command[0], command, environ) == -1)
 		{
+			free2DArray(command);
 			perror(args[0]);
 		}
 	}
 	else
 	{
 		waitpid(child, &status, 0);
+		free2DArray(command);
 	}
 	return (WEXITSTATUS(status));
+}
+
+/**
+ * free2DArray - free a 2D array
+ * @array: array
+ */
+
+void free2DArray(char **array)
+{
+	size_t i;
+
+	if (array == NULL)
+	{
+		return;
+	}
+
+	for (i = 0; array[i] != NULL; ++i)
+	{
+		free(array[i]);
+	}
+
+	free(array);
 }
