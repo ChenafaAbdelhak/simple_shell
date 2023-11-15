@@ -14,7 +14,8 @@ char *_getenv(char *value)
 	{
 		temp = _strdup(environ[i]);
 		element = strtok(temp, "=");
-		if (_strcmp(element, value) == 0)
+		if (_strcmp(elin function `_getenv':
+function3.c:(.text+0x65): undefineement, value) == 0)
 		{
 			var = strtok(NULL, "\n");
 			env = _strdup(var);
@@ -44,7 +45,7 @@ char *_getpath(char *command)
 	{
 		if (command[i] == '/')
 		{
-			if (dtat(command, &st) == 0)
+			if (stat(command, &st) == 0)
 				return (_strdup(command));
 			return (NULL);
 		}
@@ -72,7 +73,7 @@ char *_getpath(char *command)
 	free(env_path);
 	return (NULL);
 }
-/*
+
 int main(int ac, char **av)
 {
 	char *prompt;
@@ -85,4 +86,3 @@ int main(int ac, char **av)
 		printf("does not exist");
 	return (0);
 }
-*/
