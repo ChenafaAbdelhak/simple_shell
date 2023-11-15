@@ -96,7 +96,7 @@ int _execute(char **command, char **args)
 		if (execve(prompt, command, environ) == -1)
 		{
 			free(prompt), prompt = NULL;
-			free2DArray(command);
+			freeStringArray(command);
 			perror(args[0]);
 		}
 	}
@@ -104,29 +104,7 @@ int _execute(char **command, char **args)
 	{
 		waitpid(child, &status, 0);
 		free(prompt), prompt = NULL;
-		free2DArray(command);
+		freeStringArray(command);
 	}
 	return (WEXITSTATUS(status));
-}
-
-/**
- * free2DArray - free a 2D array
- * @array: array
- */
-
-void free2DArray(char **array)
-{
-	size_t i;
-
-	if (array == NULL)
-	{
-		return;
-	}
-
-	for (i = 0; array[i] != NULL; ++i)
-	{
-		free(array[i]);
-	}
-
-	free(array);
 }
