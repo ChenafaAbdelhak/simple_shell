@@ -25,7 +25,6 @@ char *_getenv(char *value)
 	}
 	return (NULL);
 }
-
 /**
  * *_getpath - function that prints each 
  * directory contained in the the environment
@@ -39,16 +38,16 @@ char *_getpath(char *command)
 	char *env_path, *prompt, *dir;
 	struct stat st;
 
-	dir = strtok(path_env, ":");
+	dir = strtok(env_path, ":");
 	while(dir)
 	{
 		prompt = malloc(_strlen(dir) + _strlen(command) + 2);
 		if (prompt)
 		{
-			_strcpy(prompt, dir);
-			_strcat(prompt, ("/");
+			_strncpy(prompt, dir);
+			_strcat(prompt, "/");
 			_strcat(prompt, command);
-			if (state(prompt, &st) == 0)
+			if (stat(prompt, &st) == 0)
 			{
 				free(env_path);
 				return (prompt);
@@ -58,10 +57,9 @@ char *_getpath(char *command)
 			dir = strtok(NULL, ":");
 		}
 	}
-	free(path_env);
+	free(env_path);
 	return (NULL);
 }
-
 int main(int ac, char **av)
 {
 	char *prompt;

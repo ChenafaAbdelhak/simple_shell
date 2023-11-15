@@ -22,7 +22,8 @@ int _execute(char **command, char **args);
 char *_getenv(char *value);
 int _strcmp(char *s1, char *s2);
 char *_getpath(char *command);
-char *_strncpy(char *dest, char *src, int n);
-
+char *_strncpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
+void freeStringArray(char **array);
 
 #endif

@@ -80,19 +80,29 @@ char **tokenizer(char *line)
 int _execute(char **command, char **args)
 {
 	pid_t child;
+	char *prompt;
 	int status;
+
+	prompt = _getpath(command[0]);
+	if (!prompt)
+	{
+		print_error();
+		return (0);
+	}
 
 	child = fork();
 	if (child == 0)
 	{
-		if (execve(command[0], command, environ) == -1)
+		if (execve(prompt, command, environ) == -1)
 		{
+			free(prompt), prompt = NULL;
 			perror(args[0]);
 		}
 	}
 	else
 	{
 		waitpid(child, &status, 0);
+		free(prompt), prompt = NULL;
 	}
 	return (WEXITSTATUS(status));
 }
