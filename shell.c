@@ -27,6 +27,10 @@ int main(int ac, char *args[])
 		command = tokenizer(line);
 		if (!command)
 			continue;
+
+		if (is_builtin(command[0]))
+			do_builtin(command, &status);
+
 		status = _execute(command, args, index);
 	}
 	return (status);
