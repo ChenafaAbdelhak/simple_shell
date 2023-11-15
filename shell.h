@@ -29,5 +29,7 @@ int _strcmp(char *s1, char *s2);
 char *int_to_str(int num);
 void reverse_string(char *str, int len);
 void Print_ERR(char *name, char *command, int i);
+void do_builtin(char **command, int status);
+void exit_shell(char **command, int status);
 
 #endif
