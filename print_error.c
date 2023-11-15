@@ -8,7 +8,7 @@
 */
 void Print_ERR(char *name, char *command, int i)
 {
-	char index, msg[] = ": not found\n";
+	char *index, msg[] = ": not found\n";
 
 	index = int_to_str(i);
 	write(STDERR_FILENO, name, _strlen(name));

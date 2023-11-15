@@ -26,44 +26,24 @@ char *_strcat(char *dest, char *src)
 }
 
 /**
- * _strcpy - copy
- * @dest: destination
- * @src: source
- * Return: dest
- */
-
-char *_strcpy(char *dest, char *src)
-{
-	char *ptr;
-	int len = 0, i = 0;
-
-	ptr = dest;
-	while (src[len] != '\0')
-		len++;
-	while (i <= len)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	return (ptr);
-}
-
-/**
  * reverse_string - reverses the characters in the array
  * @str: character
  * @len: size
 */
 
-void reverse_string(char *str, int len)
+void reverse_string(char *input, int length)
 {
-
-	for (int i = 0, j = len - 1; i < j; i++, j--)
+	int begin = 0;
+	int last = length - 1;
+	
+	while (begin < last)
 	{
-		char temp = str[i];
-
-		str[i] = str[j];
-		str[j] = temp;
-	}
+		char temp = input[begin];
+		input[begin] = input[last];
+		input[last] = temp;
+		begin++;
+		last--;
+    }
 }
 
 /**
