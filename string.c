@@ -47,3 +47,41 @@ char *_strcpy(char *dest, char *src)
 	}
 	return (ptr);
 }
+
+/**
+ * reverse_string - reverses the characters in the array
+ * @str: character
+ * @len: size
+*/
+
+void reverse_string(char *str, int len)
+{
+	for (int i = 0, j = len - 1; i < j; i++, j--)
+	{
+	char temp = str[i];
+	str[i] = str[j];
+	str[j] = temp;
+	}
+}
+
+/**
+ * *int_to_str - converts an integer (n) to a string
+ * @num: integer input
+ * return: array
+*/
+
+char *int_to_str(int num)
+{
+	char buffer[20];
+	int index = 0;
+
+	do
+	{
+		buffer[index++] = (num % 10) + '0';
+		num /= 10;
+	} while (num > 0);
+
+	buffer[index] = '\0';
+	reverse_string(buffer, index);
+	return strdup(buffer);
+}

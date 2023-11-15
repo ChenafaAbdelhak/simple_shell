@@ -6,7 +6,7 @@
  * @i: index
  *
 */
-void print_error(char *name, char *command, int i)
+void Print_ERR(char *name, char *command, int i)
 {
 	char index;
 	msg[] = ": not found";
