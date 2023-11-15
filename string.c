@@ -19,35 +19,36 @@ char *_strcat(char *dest, char *src)
 		*dest = *src;
 		src++;
 		dest++;
-			if (*src == '\n')
-				*dest = *src;
+		if (*src == '\n')
+			*dest = *src;
 	}
 	return (tmp);
 }
 
 /**
  * reverse_string - reverses the characters in the array
- * @str: character
- * @len: size
+ * @input: character
+ * @length: size
 */
 
 void reverse_string(char *input, int length)
 {
 	int begin = 0;
 	int last = length - 1;
-	
+
 	while (begin < last)
 	{
 		char temp = input[begin];
+
 		input[begin] = input[last];
 		input[last] = temp;
 		begin++;
 		last--;
-    }
+	}
 }
-
 /**
- * *int_to_str - converts an integer (n) to a string
+ * *int_to_str - converts an integer(n)
+ * to a string
  * @num: integer input
  * Return: buffer
 */

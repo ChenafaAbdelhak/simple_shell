@@ -1,6 +1,6 @@
 #include "shell.h"
 /*
- * freeStringArray - function that free an array of string
+ * freeStringArray- function that free an array of string
  * @array: input
  * Return: nothing used for freeing memory
 */
@@ -14,7 +14,7 @@ void freeStringArray(char **array)
 	{
 		free(array[i]);
 		array[i] = NULL;
-        }
+	}
 	free(array);
 	array = NULL;
 }
