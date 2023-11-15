@@ -14,8 +14,7 @@ char *_getenv(char *value)
 	{
 		temp = _strdup(environ[i]);
 		element = strtok(temp, "=");
-		if (_strcmp(elin function `_getenv':
-function3.c:(.text+0x65): undefineement, value) == 0)
+		if (_strcmp(element, value) == 0)
 		{
 			var = strtok(NULL, "\n");
 			env = _strdup(var);
@@ -51,6 +50,9 @@ char *_getpath(char *command)
 		}
 	}
 	env_path = _getenv("PATH");
+	if (!env_path)
+		return (NULL);
+
 	dir = strtok(env_path, ":");
 	while(dir)
 	{

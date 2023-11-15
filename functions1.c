@@ -87,6 +87,7 @@ int _execute(char **command, char **args)
 	if (!prompt)
 	{
 		print_error();
+		freeStringArray(command);
 		return (0);
 	}
 
