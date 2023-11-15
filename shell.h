@@ -28,7 +28,6 @@ int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 char *int_to_str(int num);
 void reverse_string(char *str, int len);
-char *_strcpy(char *dest, char *src);
 void Print_ERR(char *name, char *command, int i);
 
 #endif

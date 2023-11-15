@@ -8,16 +8,14 @@
 */
 void Print_ERR(char *name, char *command, int i)
 {
-	char index;
+	char index, msg[] = ": not found\n";
 
-	msg[] = ": not found";
-
-	index = int_to_str(i)
+	index = int_to_str(i);
 	write(STDERR_FILENO, name, _strlen(name));
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, name, _strlen(index));
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, command, _strlen(command));
-	write(STDERR_FILENO, msg, _strlen(index));
+	write(STDERR_FILENO, msg, _strlen(msg));
 	free(index);
 }

@@ -73,12 +73,12 @@ char **tokenizer(char *line)
 /**
  * _execute - execute a command
  * @command: the command
- * @args: argv of main
+ * @argv: argv of main
  * @index: integer input
  * Return: exit status
  */
 
-int _execute(char **command, char **args, int index)
+int _execute(char **command, char **argv, int index)
 {
 	pid_t child;
 	char *prompt;
@@ -87,7 +87,7 @@ int _execute(char **command, char **args, int index)
 	prompt = _getpath(command[0]);
 	if (!prompt)
 	{
-		Print_ERR(args[0], command[0], index);
+		Print_ERR(argv[0], command[0], index);
 		freeStringArray(command);
 		return (0);
 	}
@@ -99,7 +99,7 @@ int _execute(char **command, char **args, int index)
 		{
 			free(prompt), prompt = NULL;
 			freeStringArray(command);
-			perror(args[0]);
+			perror(argv[0]);
 		}
 	}
 	else
