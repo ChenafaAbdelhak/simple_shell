@@ -56,18 +56,20 @@ char *_strcpy(char *dest, char *src)
 
 void reverse_string(char *str, int len)
 {
+
 	for (int i = 0, j = len - 1; i < j; i++, j--)
 	{
-	char temp = str[i];
-	str[i] = str[j];
-	str[j] = temp;
+		char temp = str[i];
+
+		str[i] = str[j];
+		str[j] = temp;
 	}
 }
 
 /**
  * *int_to_str - converts an integer (n) to a string
  * @num: integer input
- * return: array
+ * Return: buffer
 */
 
 char *int_to_str(int num)
@@ -75,13 +77,12 @@ char *int_to_str(int num)
 	char buffer[20];
 	int index = 0;
 
-	do
-	{
+	do {
 		buffer[index++] = (num % 10) + '0';
 		num /= 10;
 	} while (num > 0);
 
 	buffer[index] = '\0';
 	reverse_string(buffer, index);
-	return strdup(buffer);
+	return (strdup(buffer));
 }
