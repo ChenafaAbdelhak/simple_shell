@@ -9,3 +9,4 @@
 void print_error(char *name, char *prompt, int i)
 {
 	char position;
+}
