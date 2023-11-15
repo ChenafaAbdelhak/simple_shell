@@ -75,7 +75,7 @@ char *_getpath(char *command)
 	free(env_path);
 	return (NULL);
 }
-
+/*
 int main(int ac, char **av)
 {
 	char *prompt;
@@ -88,3 +88,4 @@ int main(int ac, char **av)
 		printf("does not exist");
 	return (0);
 }
+*/
