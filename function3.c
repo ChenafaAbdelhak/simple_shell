@@ -54,7 +54,7 @@ char *_getpath(char *command)
 		return (NULL);
 
 	dir = strtok(env_path, ":");
-	while(dir)
+	while (dir)
 	{
 		prompt = malloc(_strlen(dir) + _strlen(command) + 2);
 		if (prompt)
@@ -75,17 +75,3 @@ char *_getpath(char *command)
 	free(env_path);
 	return (NULL);
 }
-/*
-int main(int ac, char **av)
-{
-	char *prompt;
-	(void) ac;
-
-	prompt = _getpath(av[1]);
-	if (prompt)
-		printf("%s\n", prompt);
-	else
-		printf("does not exist");
-	return (0);
-}
-*/
