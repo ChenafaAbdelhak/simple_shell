@@ -1,11 +1,10 @@
 #include "shell.h"
 /**
- * print_error - function that print Error
+ * Print_ERR - function that print Error
  * @name: string input
  * @command: string input
  * @i: index
- *
-*/
+ */
 void Print_ERR(char *name, char *command, int i)
 {
 	char *index, msg[] = ": not found\n";
