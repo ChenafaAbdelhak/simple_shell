@@ -110,3 +110,22 @@ int _execute(char **command, char **argv, int index)
 	}
 	return (WEXITSTATUS(status));
 }
+
+/**
+ * is_builtin - is it a builtin function
+ * @command: command
+ * Return: zero or one
+ */
+
+int is_builtin(char *command)
+{
+	char *builtin[] = {"exit","env"};
+	int i;
+
+	for (i = 0; i < 2; i++)
+	{
+		if (_strcmp(builtin[i], command) == 0)
+			return (1);
+	}
+	return (0);
+}
