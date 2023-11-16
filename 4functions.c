@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * do_builtin - do uilt
+ * @command: cmd
+ * @status: st
+ */
+
 void do_builtin(char **command, int *status)
 {
 	if (_strcmp(command[0], "exit") == 0)
@@ -21,7 +27,9 @@ void exit_shell(char **command, int *status)
 }
 
 /**
- *
+ * print_environ - print
+ * @command: command
+ * @status: status
  */
 
 void print_environ(char **command, int *status)

@@ -119,7 +119,7 @@ int _execute(char **command, char **argv, int index)
 
 int is_builtin(char *command)
 {
-	char *builtin[] = {"exit","env"};
+	char *builtin[] = {"exit", "env"};
 	int i;
 
 	for (i = 0; i < 2; i++)
