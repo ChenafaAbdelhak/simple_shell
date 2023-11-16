@@ -35,7 +35,6 @@ void exit_shell(char **command, int *status)
 void print_environ(char **command, int *status)
 {
 	int i;
-	(void) status;
 
 	for (i = 0; environ[i]; i++)
 	{

@@ -16,8 +16,11 @@ char *read_line(void)
 		write(STDOUT_FILENO, "$ ", 2);
 
 	n = getline(&line, &len, stdin);
-	if (n == -1)
+	if (n < 0)
+	{
+		free(line), line = NULL;
 		return (NULL);
+	}
 	return (line);
 }
 
@@ -85,7 +88,7 @@ int _execute(char **command, char **argv, int index)
 	int status;
 
 	/*prompt = _getpath(command[0]);*/
-	if (!prompt)
+	if (!command)
 	{
 		Print_ERR(argv[0], command[0], index);
 		freeStringArray(command);
