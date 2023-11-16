@@ -103,6 +103,7 @@ int _execute(char **command, char **argv, int index)
 			/*free(prompt), prompt = NULL;*/
 			freeStringArray(command);
 			perror(argv[0]);
+			exit(127);
 		}
 	}
 	else
