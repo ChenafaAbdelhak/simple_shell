@@ -88,8 +88,7 @@ int _execute(char **command, char **argv, int index)
 	int status;
 	(void) prompt;
 
-	/*prompt = _getpath(command[0]);
-	if (!prompt)*/
+	/*prompt = _getpath(command[0]);*/
 	if (!command)
 	 {
 		Print_ERR(argv[0], command[0], index);

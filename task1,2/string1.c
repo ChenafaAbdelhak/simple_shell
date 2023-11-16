@@ -6,28 +6,22 @@
  *
  *Return: void
  */
-char *_strdup(char *str)
+char *_strdup(const char *str)
 {
-	char *ret = NULL, *s = NULL;
-	int i;
+	int length = 0;
+	char *ret;
 
 	if (str == NULL)
 		return (NULL);
-	i = _strlen(str);
-	s = malloc((_strlen(str) * sizeof(char)) + 1);
-	if (s == 0)
+	while (*str++)
+		length++;
+	ret = malloc(sizeof(char) * (length + 1));
+	if (!ret)
 		return (NULL);
-	ret = s;
-	while (i > 0)
-	{
-		*s = *str;
-		s++;
-		str++;
-		i--;
-	}
+	for (length++; length--;)
+		ret[length] = *--str;
 	return (ret);
 }
-
 /**
  * _strlen - calculete length
  * @s: string

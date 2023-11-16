@@ -28,8 +28,8 @@ int main(int ac, char *args[])
 		if (!command)
 			continue;
 
-		/*if (is_builtin(command[0]))
-			do_builtin(command, &status);*/
+		if (is_builtin(command[0]))
+			do_builtin(command, &status);
 
 		status = _execute(command, args, index);
 	}
