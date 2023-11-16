@@ -88,15 +88,3 @@ int _strcmp(char *s1, char *s2)
 	}
 	return (0);
 }
-int main()
-{
-	char a[] = "hallo", *s = NULL;
-
-	s = _strdup(a);
-	if (s != NULL)
-	{
-	printf ("length %s %s \n", a, s);
-	free(s);
-	}
-	return (0);
-}

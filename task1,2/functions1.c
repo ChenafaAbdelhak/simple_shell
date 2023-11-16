@@ -86,22 +86,24 @@ int _execute(char **command, char **argv, int index)
 	pid_t child;
 	char *prompt;
 	int status;
+	(void) prompt;
 
-	prompt = _getpath(command[0]);
-	if (!prompt)
-	{
+	/*prompt = _getpath(command[0]);
+	if (!prompt)*/
+	if (!command)
+	 {
 		Print_ERR(argv[0], command[0], index);
-		freeStringArray(command);
+		freeStringArray(command), command = NULL;
 		return (127);
 	}
 
 	child = fork();
 	if (child == 0)
 	{
-		if (execve(prompt, command, environ) == -1)
+		if (execve(command[0], command, environ) == -1)
 		{
-			free(prompt), prompt = NULL;
-			freeStringArray(command);
+			/*free(prompt), prompt = NULL;*/
+			freeStringArray(command), command = NULL;
 			perror(argv[0]);
 			exit(127);
 		}
@@ -109,7 +111,7 @@ int _execute(char **command, char **argv, int index)
 	else
 	{
 		waitpid(child, &status, 0);
-		free(prompt), prompt = NULL;
+		/*free(prompt), prompt = NULL;*/
 		freeStringArray(command);
 	}
 	return (WEXITSTATUS(status));
