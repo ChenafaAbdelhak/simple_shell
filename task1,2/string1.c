@@ -8,13 +8,13 @@
  */
 char *_strdup(char *str)
 {
-	char *ret, *s;
+	char *ret = NULL, *s = NULL;
 	int i;
 
 	if (str == NULL)
 		return (NULL);
 	i = _strlen(str);
-	s = (char *)malloc(_strlen(str) * sizeof(char) + 1);
+	s = malloc((_strlen(str) * sizeof(char)) + 1);
 	if (s == 0)
 		return (NULL);
 	ret = s;
@@ -36,7 +36,8 @@ char *_strdup(char *str)
 int _strlen(char *s)
 {
 	int i = 0;
-
+	if (s == NULL)
+		return (0);
 	while (s[i] != '\0')
 	{
 		i++;
@@ -84,6 +85,18 @@ int _strcmp(char *s1, char *s2)
 		if (s1[s] != s2[s])
 			return (s1[s] - s2[s]);
 		s++;
+	}
+	return (0);
+}
+int main()
+{
+	char a[] = "hallo", *s = NULL;
+
+	s = _strdup(a);
+	if (s != NULL)
+	{
+	printf ("length %s %s \n", a, s);
+	free(s);
 	}
 	return (0);
 }

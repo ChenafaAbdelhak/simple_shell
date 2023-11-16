@@ -84,23 +84,23 @@ char **tokenizer(char *line)
 int _execute(char **command, char **argv, int index)
 {
 	pid_t child;
-	/*char *prompt;*/
+	char *prompt;
 	int status;
 
-	/*prompt = _getpath(command[0]);*/
-	if (!command)
+	prompt = _getpath(command[0]);
+	if (!prompt)
 	{
 		Print_ERR(argv[0], command[0], index);
 		freeStringArray(command);
-		return (0);
+		return (127);
 	}
 
 	child = fork();
 	if (child == 0)
 	{
-		if (execve(command[0], command, environ) == -1)
+		if (execve(prompt, command, environ) == -1)
 		{
-			/*free(prompt), prompt = NULL;*/
+			free(prompt), prompt = NULL;
 			freeStringArray(command);
 			perror(argv[0]);
 			exit(127);
@@ -109,7 +109,7 @@ int _execute(char **command, char **argv, int index)
 	else
 	{
 		waitpid(child, &status, 0);
-		/*free(prompt), prompt = NULL;*/
+		free(prompt), prompt = NULL;
 		freeStringArray(command);
 	}
 	return (WEXITSTATUS(status));
