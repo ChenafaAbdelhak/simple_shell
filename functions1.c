@@ -16,8 +16,11 @@ char *read_line(void)
 		write(STDOUT_FILENO, "$ ", 2);
 
 	n = getline(&line, &len, stdin);
-	if (n == -1)
+	if (n < 0)
+	{
+		free(line), line = NULL;
 		return (NULL);
+	}
 	return (line);
 }
 
@@ -59,9 +62,9 @@ char **tokenizer(char *line)
 		return (NULL);
 	}
 	token = strtok(line, DELIM);
-	while (token)
+	while (token != NULL)
 	{
-		command[i] = token;
+		command[i] = _strdup(token);
 		token = strtok(NULL, DELIM);
 		i++;
 	}
@@ -83,13 +86,14 @@ int _execute(char **command, char **argv, int index)
 	pid_t child;
 	char *prompt;
 	int status;
+	(void) prompt;
 
 	prompt = _getpath(command[0]);
 	if (!prompt)
-	{
+	 {
 		Print_ERR(argv[0], command[0], index);
-		freeStringArray(command);
-		return (0);
+		freeStringArray(command), command = NULL;
+		return (127);
 	}
 
 	child = fork();
@@ -98,8 +102,9 @@ int _execute(char **command, char **argv, int index)
 		if (execve(prompt, command, environ) == -1)
 		{
 			free(prompt), prompt = NULL;
-			freeStringArray(command);
+			freeStringArray(command), command = NULL;
 			perror(argv[0]);
+			exit(127);
 		}
 	}
 	else
@@ -121,7 +126,6 @@ int is_builtin(char *command)
 {
 	char *builtin[] = {"exit", "env"};
 	int i;
-
 	for (i = 0; i < 2; i++)
 	{
 		if (_strcmp(builtin[i], command) == 0)

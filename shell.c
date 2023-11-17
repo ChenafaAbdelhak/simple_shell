@@ -6,7 +6,6 @@
  * @args: aray of argument
  * Return: 0 or status
  */
-
 int main(int ac, char *args[])
 {
 	char *line = NULL, **command = NULL;
