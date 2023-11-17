@@ -64,7 +64,7 @@ char **tokenizer(char *line)
 	token = strtok(line, DELIM);
 	while (token != NULL)
 	{
-		command[i] = token;
+		command[i] = _strdup(token);
 		token = strtok(NULL, DELIM);
 		i++;
 	}
@@ -88,8 +88,8 @@ int _execute(char **command, char **argv, int index)
 	int status;
 	(void) prompt;
 
-	/*prompt = _getpath(command[0]);*/
-	if (!command)
+	prompt = _getpath(command[0]);
+	if (!prompt)
 	 {
 		Print_ERR(argv[0], command[0], index);
 		freeStringArray(command), command = NULL;
@@ -99,9 +99,9 @@ int _execute(char **command, char **argv, int index)
 	child = fork();
 	if (child == 0)
 	{
-		if (execve(command[0], command, environ) == -1)
+		if (execve(prompt, command, environ) == -1)
 		{
-			/*free(prompt), prompt = NULL;*/
+			free(prompt), prompt = NULL;
 			freeStringArray(command), command = NULL;
 			perror(argv[0]);
 			exit(127);
@@ -110,7 +110,7 @@ int _execute(char **command, char **argv, int index)
 	else
 	{
 		waitpid(child, &status, 0);
-		/*free(prompt), prompt = NULL;*/
+		free(prompt), prompt = NULL;
 		freeStringArray(command);
 	}
 	return (WEXITSTATUS(status));
@@ -126,30 +126,10 @@ int is_builtin(char *command)
 {
 	char *builtin[] = {"exit", "env"};
 	int i;
-
 	for (i = 0; i < 2; i++)
 	{
 		if (_strcmp(builtin[i], command) == 0)
 			return (1);
 	}
-	return (0);
-}
-
-int main(int ac, char **args)
-{
-	char **tok, a[] = "ls -la";
-	int i, stat;
-	(void) ac;
-
-	
-
-	tok = tokenizer(a);
-	stat = _execute(tok, args,1);
-
-	for (i = 0; tok[i]; i++)
-		printf("%s\n", tok[i]);
-	printf("%d", stat);
-
-
 	return (0);
 }
