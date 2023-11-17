@@ -62,7 +62,7 @@ char **tokenizer(char *line)
 		return (NULL);
 	}
 	token = strtok(line, DELIM);
-	while (token)
+	while (token != NULL)
 	{
 		command[i] = token;
 		token = strtok(NULL, DELIM);
@@ -132,5 +132,24 @@ int is_builtin(char *command)
 		if (_strcmp(builtin[i], command) == 0)
 			return (1);
 	}
+	return (0);
+}
+
+int main(int ac, char **args)
+{
+	char **tok, a[] = "ls -la";
+	int i, stat;
+	(void) ac;
+
+	
+
+	tok = tokenizer(a);
+	stat = _execute(tok, args,1);
+
+	for (i = 0; tok[i]; i++)
+		printf("%s\n", tok[i]);
+	printf("%d", stat);
+
+
 	return (0);
 }
