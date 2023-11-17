@@ -69,6 +69,7 @@ char **tokenizer(char *line)
 		i++;
 	}
 	command[i] = NULL;
+	free(line);
 
 	return (command);
 }
